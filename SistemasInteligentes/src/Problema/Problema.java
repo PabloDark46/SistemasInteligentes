@@ -5,12 +5,14 @@ import java.util.ArrayList;
 public class Problema {
 
 
-	private Estado estadoInicial;
-	private Estado estadoObjetivo;
+	private Nodo estadoInicial;
+	private Nodo estadoObjetivo;
 	private EspacioEstados espacio;
+	
 	public Problema(Estado estadoInicial, Estado estadoObjetivo){
 		this.estadoInicial=new Nodo(estadoInicial);
 		this.estadoObjetivo=new Nodo(estadoObjetivo);
+		this.espacio=new EspacioEstados(this.estadoInicial.getEstado(),this.estadoObjetivo.getEstado());
 		
 	}
 	

@@ -66,7 +66,7 @@ public class EspacioEstados {
 	public boolean esObjetivo(Estado actual){
 		boolean objetivo;
 		
-		objetivo=isOrdenado(actual,this.estadoObjetivo);
+		objetivo=esObjetivo(actual,this.objetivo.getEstado());
 		
 		objetivo=false;
 		

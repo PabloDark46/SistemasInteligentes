@@ -29,14 +29,12 @@ public class Nodo implements Comparable<Nodo>{
 		this.e = e;
 		this.costo = costo;
 		this.accion = accion;
-		this.valor = (int)Math.random();
 		this.padre=padre;
 	}
 	public Nodo(Estado e){
 		
 		this.e = e;
 		this.accion = "NADA";
-		this.valor = (int)Math.random();
 	}
 	
 	public Estado getEstado() {
