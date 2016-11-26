@@ -43,7 +43,6 @@ public class EspacioEstados {
 	
 	//OPERACIONES ESTADOS
 
-
 	public boolean esObjetivo(Estado actual, Estado objetivo) {
 
 		boolean ordenado = false, error = false;
@@ -67,8 +66,7 @@ public class EspacioEstados {
 		boolean objetivo;
 		
 		objetivo=esObjetivo(actual,this.objetivo.getEstado());
-		
-		objetivo=false;
+	
 		
 		return objetivo;
 	}

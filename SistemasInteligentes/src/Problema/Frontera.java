@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class Frontera{
-	PriorityQueue<Nodo> frontera = new PriorityQueue <Nodo>();
+	PriorityQueue<Nodo> frontera;
 	
 	public Frontera(Nodo estadoInicial) {
 		frontera=new PriorityQueue<Nodo>();

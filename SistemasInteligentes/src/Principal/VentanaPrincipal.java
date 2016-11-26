@@ -9,11 +9,16 @@ import javax.swing.JFileChooser;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 //import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import CargaDeImagenes.*;
+import Problema.Algoritmos;
+import Problema.Estado;
+import Problema.Nodo;
+import Problema.Problema;
 //import Problema.Estado;
 //import Problema.Nodo;
 //import treesDSESIUCLM.*;
@@ -132,6 +137,9 @@ public class VentanaPrincipal {
 			public void actionPerformed(ActionEvent e){
 				File imagen1=new File(panel.getRuta());
 				File imagen2=new File(panel2.getRuta());
+				Estado inicial;
+				Estado objetivo;
+				ArrayList<Nodo> soluciones;
 				
 				try {
 					int filas=Integer.parseInt(numFilas.getText());
@@ -139,24 +147,26 @@ public class VentanaPrincipal {
 					
 					original=Operaciones.generarPuzle(imagen1,filas,columnas,"original");
 					desordenado=Operaciones.generarPuzle(imagen2,filas,columnas,"desordenado");
+					
 					if(Operaciones.esIgualInicial(original, desordenado)){
-						
-
-						
-						
+						inicial = Operaciones.generarEstadoInicial(desordenado);
+						objetivo = Operaciones.generarEstadoInicial(original);
+						Problema p = new Problema(inicial,objetivo);
+						soluciones = Algoritmos.Busqueda(p,"anchura",4,1);
+						for(int i=0;i<soluciones.size();i++) {
+							  System.out.println(soluciones.get(i)+"-");
+						}
 					}else{
-						System.out.println("Error, la imagen no es la misma");
+						System.out.println("No se trata de la misma imagen");	
 					}
 				
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
-				
-			
 			}
 		});
+		
 		btnOrdenar.setBounds(500, 486, 97, 25);
 		frame.getContentPane().add(btnOrdenar);
 		

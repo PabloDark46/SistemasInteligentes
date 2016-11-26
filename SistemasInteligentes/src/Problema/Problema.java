@@ -24,10 +24,11 @@ public class Problema {
 
 	public Nodo getEstadoObjetivo() {
 		return estadoObjetivo;
-	}
+	}	
+}
 
 
 
 
 	
-}
+
