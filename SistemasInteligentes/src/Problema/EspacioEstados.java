@@ -3,13 +3,21 @@ import java.util.ArrayList;
 
 public class EspacioEstados {
 	
+	private int limiteProfundidad;
 	private int costoGlobal;
 	Nodo actual, objetivo;
+	
 	public EspacioEstados(Estado estadoInicial,Estado estadoObjetivo){
-		
 		actual=new Nodo(estadoInicial);
 		objetivo=new Nodo(estadoObjetivo);
-		
+	}
+	
+	public int getLimiteProfundidad(){
+		return limiteProfundidad;
+	}
+	
+	public void setLimiteProfundidad(int limiteProfundidad){
+		this.limiteProfundidad=limiteProfundidad;
 	}
 	
 	public ArrayList<Nodo> sucesores(Nodo e){
@@ -28,17 +36,14 @@ public class EspacioEstados {
 				acciones.remove("IZQUIERDA");
 				break;
 		}
+		
 		ArrayList<Nodo> sucesores=new ArrayList<Nodo>();
 		this.costoGlobal++;
 		for(int i=0;i<acciones.size();i++){
-			
 			sucesores.add(new Nodo(e.getEstado().clone(),costoGlobal,acciones.get(i),e));
 			sucesores.get(sucesores.size()-1).getEstado().mover(acciones.get(i));
-			
 		}
-		
-		return sucesores;
-			
+		return sucesores;	
 	}
 	
 	//OPERACIONES ESTADOS

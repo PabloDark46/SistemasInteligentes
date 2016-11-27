@@ -54,6 +54,9 @@ public class VentanaPrincipal {
 				}
 			}
 		});
+		
+	
+		
 	}
 
 	public VentanaPrincipal() {
@@ -152,7 +155,9 @@ public class VentanaPrincipal {
 						inicial = Operaciones.generarEstadoInicial(desordenado);
 						objetivo = Operaciones.generarEstadoInicial(original);
 						Problema p = new Problema(inicial,objetivo);
-						soluciones = Algoritmos.Busqueda(p,"anchura",4,1);
+					
+						soluciones = Algoritmos.Busqueda(p,"ANCHURA",4);
+						
 						for(int i=0;i<soluciones.size();i++) {
 							  System.out.println(soluciones.get(i)+"-");
 						}
@@ -217,5 +222,6 @@ public class VentanaPrincipal {
 		}
 		
 	}
+	
 	
 }

@@ -179,7 +179,7 @@ public class Operaciones {
 public static GenTree<Nodo> crearArbol(Puzle p){
 	
 	Estado estadoInicial=Operaciones.generarEstadoInicial(p);
-	Nodo raiz=new Nodo(estadoInicial, 0, "NADA", 0);
+	Nodo raiz=new Nodo(estadoInicial, 0, "NADA", 0,null);
 	GenTree<Nodo>arbol=new GenTree<Nodo>();
 	arbol.addRoot(raiz);
 	boolean solucion=false;

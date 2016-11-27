@@ -6,33 +6,23 @@ public class Nodo implements Comparable<Nodo>{
 	int costo;
 	String accion;
 	int valor;
-
-	public Nodo(Estado e, int costo, String accion, int valor){
-		
-		this.e = e;
-		this.costo = costo;
-		this.accion = accion;
-		this.valor = valor;
-		this.padre=null;
-	}
 	
 	public Nodo(Estado e, int costo, String accion, int valor,Nodo padre){
-		
 		this.e = e;
 		this.costo = costo;
 		this.accion = accion;
 		this.valor = valor;
 		this.padre=padre;
 	}
+	
 	public Nodo(Estado e, int costo, String accion,Nodo padre){
-		
 		this.e = e;
 		this.costo = costo;
 		this.accion = accion;
 		this.padre=padre;
 	}
+	
 	public Nodo(Estado e){
-		
 		this.e = e;
 		this.accion = "NADA";
 	}

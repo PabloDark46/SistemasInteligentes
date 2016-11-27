@@ -3,8 +3,6 @@ package Problema;
 import java.util.ArrayList;
 
 public class Problema {
-
-
 	private Nodo estadoInicial;
 	private Nodo estadoObjetivo;
 	private EspacioEstados espacio;
@@ -12,8 +10,7 @@ public class Problema {
 	public Problema(Estado estadoInicial, Estado estadoObjetivo){
 		this.estadoInicial=new Nodo(estadoInicial);
 		this.estadoObjetivo=new Nodo(estadoObjetivo);
-		this.espacio=new EspacioEstados(this.estadoInicial.getEstado(),this.estadoObjetivo.getEstado());
-		
+		this.espacio=new EspacioEstados(this.estadoInicial.getEstado(),this.estadoObjetivo.getEstado());	
 	}
 	
 
@@ -25,6 +22,8 @@ public class Problema {
 	public Nodo getEstadoObjetivo() {
 		return estadoObjetivo;
 	}	
+	
+	
 }
 
 
