@@ -12,7 +12,7 @@ public class Algoritmos {
 		return solucion;
 	}
 	
-	public static ArrayList<Nodo> BusquedaSolucion(Problema p, String estrategia, int prof_actual, int limiteProfundidad){
+	public static ArrayList<Nodo> BusquedaSolucion(Problema p, String estrategia, int costo_prof, int limiteProfundidad){
 		ArrayList<Nodo> lista_solucion = new ArrayList<Nodo>();
 		boolean essolucion = false;
 		e = new EspacioEstados(p.getEstadoInicial().getEstado(),p.getEstadoObjetivo().getEstado());
@@ -25,7 +25,7 @@ public class Algoritmos {
 				essolucion = true;
 			}else{
 				lista_solucion = e.sucesores(actual);
-				CrearListaNodosArbol(lista_solucion, actual, prof_actual++, estrategia,limiteProfundidad);
+				CrearListaNodosArbol(lista_solucion, actual, costo_prof++, estrategia,limiteProfundidad);
 				f.insertar(lista_solucion);
 			}	
 		}while(!essolucion && !f.esVacia());
@@ -33,7 +33,7 @@ public class Algoritmos {
 	}
 	
 	
-	public static void CrearListaNodosArbol(ArrayList<Nodo> lista_solucion, Nodo actual, int prof_actual,  String estrategia, int limiteProfundidad) {
+	public static void CrearListaNodosArbol(ArrayList<Nodo> lista_solucion, Nodo actual, int costo_prof,  String estrategia, int limiteProfundidad) {
 		switch(estrategia){
 		case "ANCHURA":
 			anchura(lista_solucion, actual);
@@ -42,10 +42,10 @@ public class Algoritmos {
 			profundidad(lista_solucion, actual);
 			break;
 		case "PROFUNDIDADACOTADA":
-			acotada(lista_solucion, actual, prof_actual, limiteProfundidad);
+			acotada(lista_solucion, actual, costo_prof, limiteProfundidad);
 			break;
 		case "PROFUNDIDADITERATIVA":
-			iterativa(lista_solucion, actual, prof_actual,limiteProfundidad);
+			iterativa(lista_solucion, actual, costo_prof,limiteProfundidad);
 			break;
 		case "COSTOUNIFORME":
 			costouniforme(lista_solucion, actual);
