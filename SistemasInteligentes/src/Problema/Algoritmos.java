@@ -8,7 +8,11 @@ public class Algoritmos {
 	
 	public static ArrayList<Nodo> Busqueda(Problema p, String estrategia, int limiteProfundidad){
 		ArrayList<Nodo> solucion = new ArrayList<Nodo>();
-		solucion = BusquedaSolucion(p,estrategia,0,limiteProfundidad);	
+		int prof_costo=0;	
+		while (prof_costo<limiteProfundidad){
+			solucion = BusquedaSolucion(p,estrategia,prof_costo,limiteProfundidad);
+			prof_costo++;
+		}
 		return solucion;
 	}
 	
@@ -19,7 +23,7 @@ public class Algoritmos {
 		Nodo n_inicial = new Nodo(p.getEstadoInicial().getEstado(),0,p.getEstadoInicial().getAccion(),0,null);
 		f = new Frontera(n_inicial);
 		
-		do{
+		while(!essolucion && !f.esVacia()){
 		Nodo actual = f.seleccionar();
 			if (e.esObjetivo(actual.getEstado())){
 				essolucion = true;
@@ -28,7 +32,7 @@ public class Algoritmos {
 				CrearListaNodosArbol(lista_solucion, actual, costo_prof++, estrategia,limiteProfundidad);
 				f.insertar(lista_solucion);
 			}	
-		}while(!essolucion && !f.esVacia());
+		}
 		return lista_solucion;
 	}
 	
@@ -87,12 +91,7 @@ public class Algoritmos {
 			lista_solucion.get(i).setValor(actual.getCosto()+1);
 		}
 		
-	}
-
-	
-
-
-	
+	}	
 }
 
 

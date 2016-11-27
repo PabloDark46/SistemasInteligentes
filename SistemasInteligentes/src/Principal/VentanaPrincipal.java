@@ -156,11 +156,12 @@ public class VentanaPrincipal {
 						objetivo = Operaciones.generarEstadoInicial(original);
 						Problema p = new Problema(inicial,objetivo);
 					
-						soluciones = Algoritmos.Busqueda(p,"ANCHURA",4);
+						soluciones = Algoritmos.Busqueda(p,"ANCHURA",20);
 						
 						for(int i=0;i<soluciones.size();i++) {
-							  System.out.println(soluciones.get(i)+"-");
-						}
+						  System.out.println("Valor: "+ soluciones.get(i).getValor()+" Acción: "+ soluciones.get(i).getAccion());
+					            }
+						   System.out.println();
 					}else{
 						System.out.println("No se trata de la misma imagen");	
 					}
