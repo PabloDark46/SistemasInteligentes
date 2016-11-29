@@ -155,7 +155,7 @@ public class VentanaPrincipal {
 						inicial = Operaciones.generarEstadoInicial(desordenado);
 						objetivo = Operaciones.generarEstadoInicial(original);
 						Problema p = new Problema(inicial,objetivo);
-						soluciones = Algoritmos.Busqueda(p,"ANCHURA",20);
+						soluciones = Algoritmos.Busqueda(p,"ANCHURA",1000,30);
 						
 						for(int i=0;i<soluciones.size();i++) {
 						  System.out.println("Valor: "+ soluciones.get(i).getValor()+" Acción: "+ soluciones.get(i).getAccion());
@@ -167,7 +167,6 @@ public class VentanaPrincipal {
 					}
 				
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

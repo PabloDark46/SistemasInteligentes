@@ -62,7 +62,6 @@ public class Nodo implements Comparable<Nodo>{
 		}else if (valor < nodo.valor) {
 			valor=1;
 		}
-		
 		return valor;
 		
 	}
