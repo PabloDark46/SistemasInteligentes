@@ -27,6 +27,10 @@ public class Nodo implements Comparable<Nodo>{
 		this.accion = "NADA";
 	}
 	
+	public Nodo getPadre() {
+		return padre;
+	}
+
 	public Estado getEstado() {
 		return e;
 	}
@@ -53,12 +57,16 @@ public class Nodo implements Comparable<Nodo>{
 	}
 	public int compareTo(Nodo nodo) {
 	    int valor=0;  
-		if (valor < nodo.valor) {
-			valor=-1;
-		}
 		if (valor > nodo.valor) {
+			valor=-1;
+		}else if (valor < nodo.valor) {
 			valor=1;
 		}
+		
 		return valor;
+		
+	}
+	public String toString(){
+		return String.valueOf(this.valor);
 	}
 }

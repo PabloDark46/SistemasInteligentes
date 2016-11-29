@@ -95,6 +95,7 @@ public class Operaciones {
 			}
     	}
     	if (aciertos==puzleOriginal.getP().length*puzleDesordenado.getP()[0].length){
+    		puzleDesordenado.setHueco();
     		esigual=true;
     	}
     	return esigual;
@@ -170,26 +171,5 @@ public class Operaciones {
 		}
 		return bytes;
 	}
-
-
-
-
-
-
-public static GenTree<Nodo> crearArbol(Puzle p){
-	
-	Estado estadoInicial=Operaciones.generarEstadoInicial(p);
-	Nodo raiz=new Nodo(estadoInicial, 0, "NADA", 0,null);
-	GenTree<Nodo>arbol=new GenTree<Nodo>();
-	arbol.addRoot(raiz);
-	boolean solucion=false;
-	while(!solucion){
-		
-		
-	}
-	
-	
-	return arbol;
-}
 
 }

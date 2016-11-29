@@ -150,18 +150,18 @@ public class VentanaPrincipal {
 					
 					original=Operaciones.generarPuzle(imagen1,filas,columnas,"original");
 					desordenado=Operaciones.generarPuzle(imagen2,filas,columnas,"desordenado");
-					
-					if(Operaciones.esIgualInicial(original, desordenado)){
+					boolean iguales=Operaciones.esIgualInicial(original, desordenado);
+					if(iguales){
 						inicial = Operaciones.generarEstadoInicial(desordenado);
 						objetivo = Operaciones.generarEstadoInicial(original);
 						Problema p = new Problema(inicial,objetivo);
-					
 						soluciones = Algoritmos.Busqueda(p,"ANCHURA",20);
 						
 						for(int i=0;i<soluciones.size();i++) {
 						  System.out.println("Valor: "+ soluciones.get(i).getValor()+" Acción: "+ soluciones.get(i).getAccion());
-					            }
+					    }
 						   System.out.println();
+						
 					}else{
 						System.out.println("No se trata de la misma imagen");	
 					}

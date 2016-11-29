@@ -74,7 +74,7 @@ public class Estado {
 			movimientos.add("IZQUIERDA");
 			moverDer();
 		}
-		
+	
 		return movimientos;
 	}	
 
@@ -112,7 +112,7 @@ public class Estado {
 
 	public int moverDer(){
 		int correcto=1;
-		if(getColumnaHueco()<getEstado()[0].length-1){
+		if(getColumnaHueco()<getEstado().length-1){
 			intercambia(getFilaHueco(),getColumnaHueco(),getFilaHueco(),getColumnaHueco()+1);
 			setColumnaHueco(getColumnaHueco()+1);
 			correcto=0;
@@ -134,7 +134,7 @@ public class Estado {
 
 	public int moverAbajo(){
 		int correcto=1;
-		if(getFilaHueco()<getEstado().length-1){
+		if(getFilaHueco()<getEstado()[0].length-1){
 			intercambia(getFilaHueco(),getColumnaHueco(),getFilaHueco()+1,getColumnaHueco());
 			setFilaHueco(getFilaHueco()+1);
 			correcto=0;
@@ -150,5 +150,16 @@ public class Estado {
 		
 	}
 	//MOVIMIENTOS
+	public String toString(){
+		String s="";
+		for (int i = 0; i < estado.length; i++) {
+			for (int j = 0; j < estado.length; j++) {
+				s+=estado[i][j]+" ";
+			}
+		s+="\n";	
+			
+		}
+		return s;
+	}
 	
 }
