@@ -8,7 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 //import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -140,6 +142,8 @@ public class VentanaPrincipal {
 			public void actionPerformed(ActionEvent e){
 				File imagen1=new File(panel.getRuta());
 				File imagen2=new File(panel2.getRuta());
+				FileWriter fichero = null;
+		        PrintWriter pw = null;
 				Estado inicial;
 				Estado objetivo;
 				ArrayList<Nodo> soluciones;
@@ -151,21 +155,35 @@ public class VentanaPrincipal {
 					original=Operaciones.generarPuzle(imagen1,filas,columnas,"original");
 					desordenado=Operaciones.generarPuzle(imagen2,filas,columnas,"desordenado");
 					boolean iguales=Operaciones.esIgualInicial(original, desordenado);
+					
 					if(iguales){
 						inicial = Operaciones.generarEstadoInicial(desordenado);
 						objetivo = Operaciones.generarEstadoInicial(original);
 						Problema p = new Problema(inicial,objetivo);
 						soluciones = Algoritmos.Busqueda(p,"ANCHURA",1000,30);
 						
-						for(int i=0;i<soluciones.size();i++) {
-						  System.out.println("Valor: "+ soluciones.get(i).getValor()+" Acción: "+ soluciones.get(i).getAccion());
-					    }
-						   System.out.println();
-						
+						  try{
+							  fichero = new FileWriter("C:/Users/jesus/Desktop/FicheroResultado.txt");
+					          pw = new PrintWriter(fichero);
+
+					          for (int i=soluciones.size()-1;i>=0;i--){
+					        	  pw.println("Valor: "+ soluciones.get(i).getValor()+" Acción: "+ soluciones.get(i).getAccion());
+					          }
+					      }catch (Exception e1) {
+					    	  e1.printStackTrace();
+					      
+					      }finally {
+					    	  try {
+					    		  if (null != fichero)
+					    			  fichero.close();
+					          }catch (Exception e2) {
+					        	  e2.printStackTrace();
+					          }
+					       }	
+					
 					}else{
 						System.out.println("No se trata de la misma imagen");	
 					}
-				
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
