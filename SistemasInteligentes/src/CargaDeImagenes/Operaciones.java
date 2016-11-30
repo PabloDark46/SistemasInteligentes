@@ -9,8 +9,6 @@ import java.io.*;
 import javax.imageio.ImageIO;
 
 import Problema.Estado;
-import Problema.Nodo;
-import treesDSESIUCLM.GenTree;
 //import javax.swing.ImageIcon;
 //import javax.swing.SingleSelectionModel;
 
@@ -52,6 +50,17 @@ public class Operaciones {
         		imagenActual++;
         	}
         
+        Puzle p=new Puzle(matriz);
+        return p;
+        
+    }
+public static Puzle generarPuzle(String carpeta, Estado e) throws IOException {
+		Pieza[][] matriz=new Pieza[e.getEstado().length][e.getEstado()[0].length];
+		for (int i = 0; i < e.getEstado().length; i++) {
+			for (int j = 0; j < e.getEstado()[0].length; j++) {
+				matriz[i][j]=new Pieza(carpeta+"\\"+e.getEstado()[i][j]+".jpg",e.getEstado()[i][j]);
+			}
+		}
         Puzle p=new Puzle(matriz);
         return p;
         

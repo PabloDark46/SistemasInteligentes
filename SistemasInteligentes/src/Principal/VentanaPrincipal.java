@@ -21,6 +21,8 @@ import Problema.Algoritmos;
 import Problema.Estado;
 import Problema.Nodo;
 import Problema.Problema;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 //import Problema.Estado;
 //import Problema.Nodo;
 //import treesDSESIUCLM.*;
@@ -41,11 +43,10 @@ public class VentanaPrincipal {
 	private Puzle desordenado;
 	private File carpetaOriginal;
 	private File carpetaDesordenado;
-	private File carpetaSucesores;
 	private File carpetaMovimientos;
 		
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -61,19 +62,19 @@ public class VentanaPrincipal {
 		
 	}
 
-	public VentanaPrincipal() {
+	public VentanaPrincipal() throws IOException{
 		initialize();
 	}
 
-	private void initialize() {	
+	private void initialize() throws IOException{	
 		
 		carpetaOriginal=new File("original");
 		carpetaDesordenado=new File("desordenado");
 		carpetaMovimientos=new File("movimientos");
-		carpetaSucesores=new File("sucesores");
 		
 		if(!carpetaOriginal.isFile()){
 			carpetaOriginal.mkdir();
+			
 		}
 		
 		if(!carpetaDesordenado.isFile()){
@@ -84,11 +85,8 @@ public class VentanaPrincipal {
 			carpetaMovimientos.mkdir();
 		}
 		
-		if(!carpetaMovimientos.isFile()){
-			carpetaSucesores.mkdir();
-		}
-		
 		frame = new JFrame();
+		frame.addWindowListener(new FrameWindowListener());
 		frame.setBounds(100, 100, 947, 616);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -163,11 +161,12 @@ public class VentanaPrincipal {
 						soluciones = Algoritmos.Busqueda(p,"ANCHURA",1000,30);
 						
 						  try{
-							  fichero = new FileWriter("C:/Users/jesus/Desktop/FicheroResultado.txt");
+							  
+							  fichero = new FileWriter("FicheroResultado.txt");
 					          pw = new PrintWriter(fichero);
 
 					          for (int i=soluciones.size()-1;i>=0;i--){
-					        	  pw.println("Valor: "+ soluciones.get(i).getValor()+" Acción: "+ soluciones.get(i).getAccion());
+					        	  pw.println(soluciones.get(i).getAccion());
 					          }
 					      }catch (Exception e1) {
 					    	  e1.printStackTrace();
@@ -180,7 +179,10 @@ public class VentanaPrincipal {
 					        	  e2.printStackTrace();
 					          }
 					       }	
-					
+						  for (int i=soluciones.size()-1;i>=0;i--){
+							  Puzle puzleSolucion=Operaciones.generarPuzle("original", soluciones.get(i).getEstado());
+							  puzleSolucion.unir("movimientos");
+						  }
 					}else{
 						System.out.println("No se trata de la misma imagen");	
 					}
@@ -239,6 +241,44 @@ public class VentanaPrincipal {
 			System.exit(0);		
 		}
 		
+	}
+	private class FrameWindowListener extends WindowAdapter {
+		@Override
+		public void windowClosed(WindowEvent e) {
+			File[] ficherosOriginal=carpetaOriginal.listFiles();
+			File[] ficherosDesordenado=carpetaDesordenado.listFiles();
+			
+			for(int i=0;i<ficherosOriginal.length;i++){
+				ficherosOriginal[i].setWritable(true);
+				ficherosOriginal[i].delete();
+				
+			}
+			
+			for(int i=0;i<ficherosDesordenado.length;i++){
+				ficherosDesordenado[i].setWritable(true);
+				ficherosDesordenado[i].delete();
+			}
+			carpetaOriginal.delete();
+			carpetaDesordenado.delete();
+		}
+		@Override
+		public void windowClosing(WindowEvent e) {
+			File[] ficherosOriginal=carpetaOriginal.listFiles();
+			File[] ficherosDesordenado=carpetaDesordenado.listFiles();
+			
+			for(int i=0;i<ficherosOriginal.length;i++){
+				ficherosOriginal[i].setWritable(true);
+				ficherosOriginal[i].delete();
+				
+			}
+			
+			for(int i=0;i<ficherosDesordenado.length;i++){
+				ficherosDesordenado[i].setWritable(true);
+				ficherosDesordenado[i].delete();
+			}
+			carpetaOriginal.delete();
+			carpetaDesordenado.delete();
+		}
 	}
 	
 	

@@ -1,6 +1,5 @@
 package Problema;
 
-import java.util.ArrayList;
 
 public class Problema {
 	private Nodo estadoInicial;
