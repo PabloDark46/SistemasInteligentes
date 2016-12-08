@@ -153,7 +153,7 @@ public class Estado {
 	public String toString(){
 		String s="";
 		for (int i = 0; i < estado.length; i++) {
-			for (int j = 0; j < estado.length; j++) {
+			for (int j = 0; j < estado[0].length; j++) {
 				s+=estado[i][j]+" ";
 			}
 		s+="\n";	

@@ -1,5 +1,6 @@
 package CargaDeImagenes;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 //import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -29,6 +30,14 @@ public class Operaciones {
                 imgs[count] = new BufferedImage(chunkWidth, chunkHeight, image.getType());
                 Graphics2D gr = imgs[count++].createGraphics();
                 gr.drawImage(image, 0, 0, chunkWidth, chunkHeight, chunkWidth * y, chunkHeight * x, chunkWidth * y + chunkWidth, chunkHeight * x + chunkHeight, null);
+                if(carpeta=="original"){
+                	if(x==0 && y==0){
+                	     
+                	     gr.setColor(Color.BLACK);
+                	           gr.fillRect(0, 0, chunkWidth, chunkHeight);
+             
+                	  }
+                }
                 gr.dispose();
             }
         }

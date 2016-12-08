@@ -25,7 +25,6 @@ public class EspacioEstados {
 
 		for(int i=0;i<acciones.size();i++){
 			sucesores.add(new Nodo(e.getEstado().clone(),e.getCosto()+1,acciones.get(i),e));
-			System.out.println(sucesores.get(sucesores.size()-1).getEstado());
 			sucesores.get(sucesores.size()-1).getEstado().mover(acciones.get(i));
 				
 		}

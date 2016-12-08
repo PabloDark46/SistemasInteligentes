@@ -155,10 +155,11 @@ public class VentanaPrincipal {
 					boolean iguales=Operaciones.esIgualInicial(original, desordenado);
 					
 					if(iguales){
+						
 						inicial = Operaciones.generarEstadoInicial(desordenado);
 						objetivo = Operaciones.generarEstadoInicial(original);
 						Problema p = new Problema(inicial,objetivo);
-						soluciones = Algoritmos.Busqueda(p,"ANCHURA",1000,30);
+						soluciones = Algoritmos.Busqueda(p,"A*",1000,30);
 						
 						  try{
 							  

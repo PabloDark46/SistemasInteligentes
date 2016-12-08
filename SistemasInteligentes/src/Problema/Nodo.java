@@ -6,6 +6,8 @@ public class Nodo implements Comparable<Nodo>{
 	int costo;
 	String accion;
 	int valor;
+	int profundidad;
+	int h;
 	
 	public Nodo(Estado e, int costo, String accion, int valor,Nodo padre){
 		this.e = e;
@@ -29,6 +31,21 @@ public class Nodo implements Comparable<Nodo>{
 	
 	public Nodo getPadre() {
 		return padre;
+	}
+	public void setH(){
+		int posEsperada=0;
+		for (int i = 0; i < e.getEstado().length; i++) {
+			for (int j = 0; j < e.getEstado()[0].length; j++) {
+				if(e.getEstado()[i][j]!=posEsperada){
+					this.h+=1;
+				}
+			posEsperada+=1;		
+			}
+		}
+	}
+	
+	public int getH() {
+		return h;
 	}
 
 	public Estado getEstado() {

@@ -60,6 +60,9 @@ public class Algoritmos {
 			case "COSTOUNIFORME":
 				costouniforme(listaSucesores, actual);
 				break;
+			case "A*":
+				asterisco(listaSucesores,actual);
+				break;
 		}
 	}
 
@@ -71,7 +74,7 @@ public class Algoritmos {
 
 	public static void profundidad(ArrayList<Nodo> listaSucesores, Nodo actual) {
 		for (int i = 1; i <= listaSucesores.size(); i++) {
-			listaSucesores.get(i).setValor(i);
+			listaSucesores.get(i).setValor(actual.getValor()+i);
 		}
 	}
 
@@ -95,5 +98,11 @@ public class Algoritmos {
 			listaSucesores.get(i).setValor(actual.getCosto() + 1);
 		}
 
+	}
+	public static void asterisco(ArrayList<Nodo> listaSucesores, Nodo actual){
+		for (int i = 0; i < listaSucesores.size(); i++) {
+			listaSucesores.get(i).setH();
+			listaSucesores.get(i).setValor(listaSucesores.get(i).getCosto()+listaSucesores.get(i).getH());
+		}
 	}
 }
