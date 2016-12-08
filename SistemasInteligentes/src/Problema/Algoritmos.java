@@ -75,19 +75,19 @@ public class Algoritmos {
 		}
 	}
 
-	public static void acotada(ArrayList<Nodo> listaSucesores, Nodo actual, int prof_actual, int limiteProfundidad) {
-		if (prof_actual < limiteProfundidad) {
+	public static void acotada(ArrayList<Nodo> listaSucesores, Nodo actual, int prof_actual, int profundidadMaxima) {
+		if (prof_actual < profundidadMaxima) {
 			for (int i = 1; i <= listaSucesores.size(); i++) {
 				listaSucesores.get(i).setValor(i);
 			}
 		}
 	}
 
-	public static void iterativa(ArrayList<Nodo> listaSucesores, Nodo actual, int prof_actual, int limiteProfundidad) {
+	public static void iterativa(ArrayList<Nodo> listaSucesores, Nodo actual, int prof_actual, int profundidadMaxima) {
 		for (int i = 1; i <= listaSucesores.size(); i++) {
 			listaSucesores.get(i).setValor(i);
 		}
-		limiteProfundidad = prof_actual;
+		profundidadMaxima = prof_actual;
 	}
 
 	public static void costouniforme(ArrayList<Nodo> listaSucesores, Nodo actual) {
