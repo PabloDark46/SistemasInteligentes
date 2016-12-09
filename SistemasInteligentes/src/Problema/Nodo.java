@@ -36,8 +36,10 @@ public class Nodo implements Comparable<Nodo>{
 		int posEsperada=0;
 		for (int i = 0; i < e.getEstado().length; i++) {
 			for (int j = 0; j < e.getEstado()[0].length; j++) {
-				if(e.getEstado()[i][j]!=posEsperada){
-					this.h+=1;
+				if(e.getEstado()[i][j]!=0){
+					if(e.getEstado()[i][j]!=posEsperada){
+						this.h+=1;
+					}
 				}
 			posEsperada+=1;		
 			}
@@ -72,14 +74,13 @@ public class Nodo implements Comparable<Nodo>{
 	public void setValor(int valor) {
 		this.valor = valor;
 	}
+	@Override
 	public int compareTo(Nodo nodo) {
-	    int valor=0;  
-		if (valor > nodo.valor) {
-			valor=-1;
-		}else if (valor < nodo.valor) {
-			valor=1;
-		}
-		return valor;
+	   
+		String a=new String(String.valueOf(this.getValor()));
+	    String b=new String(String.valueOf(nodo.getValor()));
+	      
+	    return a.compareTo(b);
 		
 	}
 	public String toString(){

@@ -1,5 +1,6 @@
 package Problema;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 //import java.util.PriorityQueue;
 
@@ -23,6 +24,7 @@ public class Frontera{
 		frontera.add(nodo);
 		Comparator<Nodo>c=Comparator.naturalOrder();
 		frontera.sort(c);
+		
 	}
 	public void insertar(ArrayList<Nodo> suc){
 		
@@ -45,33 +47,5 @@ public class Frontera{
 	}
 	//OPERACIONES
 	
-	/*public Frontera(Nodo estadoInicial) {
-	frontera=new PriorityQueue<Nodo>();
-	insertar(estadoInicial);
-	}
-	
-	public PriorityQueue<Nodo> getFrontera() {
-	return frontera;
-	}
-	
-	public void insertar(Nodo nodo){
-		List b=new List();
-		b.so
-		frontera.add(nodo);
-		ArrayList<Nodo>a=new ArrayList<Nodo>();
-		Comparator<?super Nodo>c=new Comparator<?super Nodo>();
-		a.sort(c);
-	}
-	
-	public void insertar(ArrayList<Nodo> suc){
-		
-		for (int i = 0; i < suc.size(); i++)
-			insertar(suc.get(i));
-		
-	}
-	
-	public Nodo seleccionar(){
-		return frontera.remove();
-	}*/
 }
 

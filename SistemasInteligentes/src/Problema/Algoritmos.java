@@ -38,6 +38,7 @@ public class Algoritmos {
 				listaSucesores=p.getEspacio().sucesores(actual);
 				CrearListaNodosArbol(listaSucesores, actual, costo_prof++, estrategia, profundidadMaxima);
 				f.insertar(listaSucesores);
+				System.out.println(f);
 			}	
 		}
 		return lista_solucion;
@@ -102,7 +103,7 @@ public class Algoritmos {
 	public static void asterisco(ArrayList<Nodo> listaSucesores, Nodo actual){
 		for (int i = 0; i < listaSucesores.size(); i++) {
 			listaSucesores.get(i).setH();
-			listaSucesores.get(i).setValor(listaSucesores.get(i).getCosto()+listaSucesores.get(i).getH());
+			listaSucesores.get(i).setValor(actual.getCosto()+1+listaSucesores.get(i).getH());
 		}
 	}
 }
