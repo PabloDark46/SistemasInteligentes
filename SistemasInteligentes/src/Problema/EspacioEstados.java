@@ -22,7 +22,21 @@ public class EspacioEstados {
 	public ArrayList<Nodo> sucesores(Nodo e){
 		ArrayList<String> acciones=e.getEstado().acciones();
 		ArrayList<Nodo> sucesores=new ArrayList<Nodo>();
-
+		switch(e.accion){
+			case "ARRIBA":
+				acciones.remove("ABAJO");
+				break;
+			case "ABAJO":
+				acciones.remove("ARRIBA");
+				break;
+			case "IZQUIERDA":
+				acciones.remove("DERECHA");
+				break;
+			case "DERECHA":
+				acciones.remove("IZQUIERDA");
+				break;
+					
+		}
 		for(int i=0;i<acciones.size();i++){
 			sucesores.add(new Nodo(e.getEstado().clone(),e.getCosto()+1,acciones.get(i),e));
 			sucesores.get(sucesores.size()-1).getEstado().mover(acciones.get(i));
