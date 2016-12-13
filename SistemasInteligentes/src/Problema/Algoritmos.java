@@ -84,14 +84,14 @@ public class Algoritmos {
 	}
 
 	public static void profundidad(ArrayList<Nodo> listaSucesores, Nodo actual) {
-		for (int i = 1; i <= listaSucesores.size(); i++) {
+		for (int i = 1; i < listaSucesores.size(); i++) {
 			listaSucesores.get(i).setValor(actual.getValor()+i);
 		}
 	}
 
 	public static void acotada(ArrayList<Nodo> listaSucesores, Nodo actual, int prof_actual, int profundidadMaxima) {
 		if (prof_actual < profundidadMaxima) {
-			for (int i = 1; i <= listaSucesores.size(); i++) {
+			for (int i = 1; i < listaSucesores.size(); i++) {
 				listaSucesores.get(i).setValor(i);
 			}
 		}
