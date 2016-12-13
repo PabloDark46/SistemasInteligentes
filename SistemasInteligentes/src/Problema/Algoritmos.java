@@ -98,7 +98,7 @@ public class Algoritmos {
 	}
 
 	public static void iterativa(ArrayList<Nodo> listaSucesores, Nodo actual, int prof_actual, int profundidadMaxima) {
-		for (int i = 1; i <= listaSucesores.size(); i++) {
+		for (int i = 1; i < listaSucesores.size(); i++) {
 			listaSucesores.get(i).setValor(i);
 		}
 		profundidadMaxima = prof_actual;
