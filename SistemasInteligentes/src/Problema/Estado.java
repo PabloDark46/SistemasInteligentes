@@ -149,6 +149,19 @@ public class Estado {
 		this.getEstado()[filaDestino][columnaDestino]=aux;
 		
 	}
+	public boolean equals(Estado e){
+		boolean iguales=true;
+		for (int i = 0; i < estado.length && iguales; i++) {
+			for (int j = 0; j < estado[0].length && iguales; j++) {
+				if(estado[i][j]!=e.getEstado()[i][j]){
+					iguales=false;
+				}
+					
+			}
+			
+		}
+		return iguales;
+	}
 	//MOVIMIENTOS
 	public String toString(){
 		String s="";

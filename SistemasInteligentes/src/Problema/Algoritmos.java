@@ -2,12 +2,13 @@ package Problema;
 
 import java.util.ArrayList;
 
+
 public class Algoritmos {
 
 	public static ArrayList<Nodo> Busqueda(Problema p, String estrategia, int limiteProfundidad, int profundidadMaxima) {
 		ArrayList<Nodo> solucion = new ArrayList<Nodo>();
 		int prof_costo = 0;
-		while (prof_costo < limiteProfundidad) {
+		while (prof_costo < limiteProfundidad && solucion.size()==0) {
 			solucion = BusquedaSolucion(p, estrategia, prof_costo, profundidadMaxima);
 			prof_costo++;
 		}
@@ -20,11 +21,12 @@ public class Algoritmos {
 		Nodo actual=p.getEstadoInicial();
 		Frontera f = new Frontera(actual);
 		ArrayList<Nodo>listaSucesores;
-		
+		ArrayList<Nodo>listaNodos=new ArrayList<Nodo>();
 		while (!solucion && !f.esVacia()) {
 			actual = f.seleccionar();
-			
+			listaNodos.add(actual);
 			if (p.getEspacio().esObjetivo(actual.getEstado())) {
+				
 				solucion = true;
 				Nodo recorrido = actual;
 				lista_solucion.add(recorrido);
@@ -35,16 +37,24 @@ public class Algoritmos {
 				}
 				
 			} else {
+				
 				listaSucesores=p.getEspacio().sucesores(actual);
-				CrearListaNodosArbol(listaSucesores, actual, costo_prof++, estrategia, profundidadMaxima);
+				for(int a=0; a<listaSucesores.size(); a++){
+					for(int b=0; b<listaNodos.size(); b++){
+						if (listaSucesores.get(a)!=null&& listaSucesores.get(a).getEstado().equals(listaNodos.get(b).getEstado())){
+							listaSucesores.set(a,null);
+						}
+					}
+				}
+				while(listaSucesores.remove(null));
+				CrearListaNodosArbol(listaSucesores, actual, costo_prof++, estrategia, profundidadMaxima,f);				
 				f.insertar(listaSucesores);
-				System.out.println(f);
 			}	
 		}
 		return lista_solucion;
 	}
 
-	public static void CrearListaNodosArbol(ArrayList<Nodo> listaSucesores, Nodo actual, int costo_prof,String estrategia, int profundidadMaxima){
+	public static void CrearListaNodosArbol(ArrayList<Nodo> listaSucesores, Nodo actual, int costo_prof,String estrategia, int profundidadMaxima,Frontera frontera){
 		switch (estrategia) {
 			case "ANCHURA":
 				anchura(listaSucesores, actual);
@@ -62,7 +72,7 @@ public class Algoritmos {
 				costouniforme(listaSucesores, actual);
 				break;
 			case "A*":
-				asterisco(listaSucesores,actual);
+				asterisco(listaSucesores,actual,frontera);
 				break;
 		}
 	}
@@ -100,10 +110,11 @@ public class Algoritmos {
 		}
 
 	}
-	public static void asterisco(ArrayList<Nodo> listaSucesores, Nodo actual){
+	public static void asterisco(ArrayList<Nodo> listaSucesores, Nodo actual, Frontera f){
 		for (int i = 0; i < listaSucesores.size(); i++) {
 			listaSucesores.get(i).setH();
-			listaSucesores.get(i).setValor(actual.getCosto()+1+listaSucesores.get(i).getH());
+			listaSucesores.get(i).setValor(actual.getCosto()+1+listaSucesores.get(i).getH());	
 		}
+
 	}
 }

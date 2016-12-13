@@ -9,15 +9,17 @@ public class Nodo implements Comparable<Nodo>{
 	int profundidad;
 	int h;
 	
-	public Nodo(Estado e, int costo, String accion, int valor,Nodo padre){
+	public Nodo(Estado e, int costo,int profundidad, String accion, int valor,Nodo padre){
+		
 		this.e = e;
 		this.costo = costo;
 		this.accion = accion;
 		this.valor = valor;
 		this.padre=padre;
+		this.profundidad=profundidad;
 	}
 	
-	public Nodo(Estado e, int costo, String accion,Nodo padre){
+	public Nodo(Estado e, int costo,int profundidad, String accion,Nodo padre){
 		this.e = e;
 		this.costo = costo;
 		this.accion = accion;
@@ -32,6 +34,15 @@ public class Nodo implements Comparable<Nodo>{
 	public Nodo getPadre() {
 		return padre;
 	}
+	
+	public int getProfundidad() {
+		return profundidad;
+	}
+
+	public void setProfundidad(int profundidad) {
+		this.profundidad = profundidad;
+	}
+
 	public void setH(){
 		int posEsperada=0;
 		for (int i = 0; i < e.getEstado().length; i++) {
@@ -76,13 +87,12 @@ public class Nodo implements Comparable<Nodo>{
 	}
 	@Override
 	public int compareTo(Nodo nodo) {
-	   
-		String a=new String(String.valueOf(this.getValor()));
-	    String b=new String(String.valueOf(nodo.getValor()));
-	      
-	    return a.compareTo(b);
+		Integer vA=new Integer(this.valor);
+	    Integer vB=new Integer(nodo.getValor());
 		
+		return vA.compareTo(vB);
 	}
+	
 	public String toString(){
 		return String.valueOf(this.valor);
 	}
