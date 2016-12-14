@@ -197,12 +197,22 @@ public class VentanaPrincipal {
 									e2.printStackTrace();
 								}
 							}
+							
+							String valores="";
+							int sumaValores=0;
 							for (int i = soluciones.size() - 1; i >= 0; i--) {
+								valores+=soluciones.get(i).getH()+" ";
+								sumaValores+=soluciones.get(i).getH();
 								Puzle puzleSolucion = Operaciones.generarPuzle("original",
 										soluciones.get(i).getEstado());
 								puzleSolucion.unir("movimientos");
 
 							}
+							System.out.println("Profundidad de la solución: "+soluciones.get(0).getProfundidad());
+							System.out.println("Costo de la solución: "+soluciones.get(0).getCosto());
+							System.out.println("Lista de valores de H: ");
+							System.out.println(valores);
+							System.out.print("Suma de valores de H: "+sumaValores);
 						} else {
 							lblInformacion.setText("Error. No se pudo encontrar solución");
 						}

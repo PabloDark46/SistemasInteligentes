@@ -24,11 +24,15 @@ public class Nodo implements Comparable<Nodo>{
 		this.costo = costo;
 		this.accion = accion;
 		this.padre=padre;
+		this.profundidad=profundidad;
 	}
 	
 	public Nodo(Estado e){
 		this.e = e;
 		this.accion = "NADA";
+		this.valor=0;
+		this.profundidad=0;
+		this.setH();
 	}
 	
 	public Nodo getPadre() {
